@@ -1,0 +1,131 @@
+    <div class="center">
+
+    <div class="">
+
+        <div
+            class=" p-4 w-full max-w-sm bg-white rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div class="space-y-6">
+                <h5 class="text-xl font-medium text-gray-900 dark:text-white">Edit Product</h5>
+                <div>
+                    <label for="pname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Product Name</label>
+                    <input type="text" name="name" id="name" value="{{data.name}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="Name..." required="">
+                </div>
+                <div>
+                    <label for="sdes" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Short Description</label>
+                    <input type="text" name="sdes" id="sdes" value="{{data.sdes}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="it's a sample product" required="">
+                </div>
+                <div>
+                    <label for="ldes" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Long Description</label>
+                    <textarea type="text" name="ldes" id="ldes" 
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="............" required="">{{data.ldes}}</textarea>
+                </div>
+                <div>
+                    <label for="tags" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Tags</label>
+                    <input type="text" name="tags" id="tags" value="{{data.tags}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="tags.." required="">
+                </div>
+                <div>
+                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Price</label>
+                    <input type="number" name="price" id="price" value="{{data.price}}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="800" required="">
+                </div>
+                          <img class="p-8 rounded-t-lg" id="imgview"
+                            src="{{data.image}}" alt="{{data.image}}">
+
+                <div>
+                    <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                       Change Image</label>
+
+                    <input type="file" name="image" id="image"  onchange="preview(event)"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="800" >
+                </div>
+              <input type="text" name="id" id="id" hidden value="{{data._id}}" />
+
+                <button 
+                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                   Edit Product </button>
+           
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+       function preview(e) {
+           console.log(e) 
+        document.getElementById('imgview').src = URL.createObjectURL(e.target.files[0])
+    }
+  let image;
+
+    let name = document.getElementById('name').value;
+    let sdes = document.getElementById('sdes').value;
+    let ldes = document.getElementById('ldes').value;
+    let tags = document.getElementById('tags').value;
+    let price = document.getElementById('price').value;
+    let id = document.getElementById('id').value;
+
+
+    $("button").click(async function () {
+        let image = await updateImageDisplay();
+
+
+
+        $.post("/products/edit/",
+            {
+                sdes: sdes, ldes: ldes, price: price, name: name, tags: tags, image: image,id:id
+            },
+            function () {
+                alert('added');
+                window.location = "http://localhost:3000/products/";
+            });
+
+    });
+
+
+    const input = document.getElementById('image');
+   
+
+    async function updateImageDisplay() {
+
+        const curFiles = input.files;
+        for (const file of curFiles) {
+
+            const data = new FormData()
+            data.append("file", file)
+            data.append("upload_preset", "e-commerce")
+            data.append("cloud_name", "gbrozdev")
+            await fetch("https://api.cloudinary.com/v1_1/gbrozdev/image/upload", {
+                method: "post",
+                body: data
+            })
+                .then(res => res.json())
+                .then(data => {
+
+
+
+                    let url = 'https://res.cloudinary.com/gbrozdev/image/upload/v1662275322/' + data.public_id + '.png'
+                    image = url;
+
+                    alert('image added');
+
+
+                })
+        }
+        return image;
+    }
+
+</script>

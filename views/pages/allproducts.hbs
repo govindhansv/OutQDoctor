@@ -1,0 +1,52 @@
+<div class="center">
+
+
+    <!-- product-grid - start -->
+    <div class="bg-white py-6 sm:py-8 lg:py-12" id="mens">
+        <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
+            <!-- text - start -->
+            <div class="mb-10 md:mb-16">
+                <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">Mens</h2>
+
+                <p class="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated.</p>
+            </div>
+            <!-- text - end -->
+
+            <div id="parent" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8">
+                <!-- product - start -->
+                {{#each data}}
+                <div class="searchitem">
+                    <div class=" group h-96 block bg-gray-100 rounded-lg overflow-hidden shadow-lg relative mb-2 lg:mb-3">
+                        <img src="{{this.image}}" loading="lazy" alt="Photo by Austin Wade" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
+
+                        <div class="flex gap-2 absolute left-0 bottom-2">
+                            <button onclick="addFav('{{this._id}}')" class="bg-red-500 text-white text-sm font-semibold tracking-wider uppercase rounded-r-lg px-3 py-1.5"><i class="fa-regular fa-heart"></i></button>
+                            <button onclick="addToCart('{{this._id}}')" class="bg-white text-gray-800 text-sm font-bold tracking-wider uppercase rounded-lg px-3 py-1.5"><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-start gap-2 px-2">
+                        <div class="flex flex-col">
+                            <a href="/products/{{this._id}}" class="text-gray-800 hover:text-gray-500 text-lg lg:text-xl font-bold transition duration-100">
+              {{this.name}} </a>
+                            <span class="text-gray-500">{{this.sdes}}</span>
+                        </div>
+
+                        <div class="flex flex-col items-end">
+                            <span class="text-gray-600 lg:text-lg font-bold">${{this.price}}</span>
+                            <span class="text-red-500 text-sm line-through">$100</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- product - end -->
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <!-- product-grid - end -->
+
+
+</div>
+</div>
+
+<script src="/js/script.js"></script>

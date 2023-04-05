@@ -1,0 +1,296 @@
+<link href="https://unpkg.com/tailwindcss@0.3.0/dist/tailwind.min.css" rel="stylesheet">
+
+<div class="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10  text-gray-800">
+    <h2 class="text-xl font-semibold">Order ID : {{data._id}} </h2>
+    <p>Total amount:
+        <span class="font-semibold">{{data.total}} </span>
+    </p>
+    <span class="font-semibold">{{data.status}} </span>
+
+    {{#if one}}
+
+  <div class="max-w-xl mx-auto my-4 border-b-2 pb-4">
+        <div class="flex pb-3">
+            <div class="flex-1">
+            </div>
+            <div class="flex-1">
+                <div class="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">1</span>
+                </div>
+            </div>
+
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full  bg-green rounded items-center align-middle align-center flex-1">
+                    <div class=" text-xs leading-none py-1 text-center text-grey-darkest rounded " style="width: 100%">
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10  bg-green border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">2</span>
+                </div>
+            </div>
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+                    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                        style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-grey-darker text-center w-full">3</span>
+                </div>
+            </div>
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+                    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                        style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-grey-darker text-center w-full">4</span>
+                </div>
+            </div>
+
+            <div class="flex-1">
+            </div>
+        </div>
+
+        <div class="flex text-xs content-center text-center">
+            <div class="w-1/4">
+                Order Recieved
+            </div>
+
+            <div class="w-1/4">
+                Order Confirmed
+            </div>
+
+            <div class="w-1/4">
+                Item dispatched
+            </div>
+
+            <div class="w-1/4">
+                Delivered
+            </div>
+        </div>
+    </div>
+
+    {{else if two}}
+
+    <div class="max-w-xl mx-auto my-4 border-b-2 pb-4">
+        <div class="flex pb-3">
+            <div class="flex-1">
+            </div>
+            <div class="flex-1">
+                <div class="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">1</span>
+                </div>
+            </div>
+
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full  bg-green rounded items-center align-middle align-center flex-1">
+                    <div class=" text-xs leading-none py-1 text-center text-grey-darkest rounded " style="width: 100%">
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10  bg-green border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">2</span>
+                </div>
+            </div>
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full  bg-green rounded items-center align-middle align-center flex-1">
+                    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                        style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10  bg-green border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">3</span>
+                </div>
+            </div>
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+                    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                        style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10  bg-light  border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class=" text-grey text-center w-full">4</span>
+                </div>
+            </div>
+
+            <div class="flex-1">
+            </div>
+        </div>
+
+        <div class="flex text-xs content-center text-center">
+            <div class="w-1/4">
+                Order Recieved
+            </div>
+
+            <div class="w-1/4">
+                Order Confirmed
+            </div>
+
+            <div class="w-1/4">
+                Item dispatched
+            </div>
+
+            <div class="w-1/4">
+                Delivered
+            </div>
+        </div>
+    </div>
+
+    {{else if three}}
+    <div class="max-w-xl mx-auto my-4 border-b-2 pb-4">
+        <div class="flex pb-3">
+            <div class="flex-1">
+            </div>
+            <div class="flex-1">
+                <div class="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">1</span>
+                </div>
+            </div>
+
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full  bg-green rounded items-center align-middle align-center flex-1">
+                    <div class=" text-xs leading-none py-1 text-center text-grey-darkest rounded " style="width: 100%">
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10  bg-green border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">2</span>
+                </div>
+            </div>
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full  bg-green rounded items-center align-middle align-center flex-1">
+                    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                        style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10  bg-green border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">3</span>
+                </div>
+            </div>
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full bg-green rounded items-center align-middle align-center flex-1">
+                    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                        style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10 bg-green border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class=" text-white text-center w-full">4</span>
+                </div>
+            </div>
+
+            <div class="flex-1">
+            </div>
+        </div>
+
+        <div class="flex text-xs content-center text-center">
+            <div class="w-1/4">
+                Order Recieved
+            </div>
+
+            <div class="w-1/4">
+                Order Confirmed
+            </div>
+
+            <div class="w-1/4">
+                Item dispatched
+            </div>
+
+            <div class="w-1/4">
+                Delivered
+            </div>
+        </div>
+    </div>
+
+    {{else}}
+    <div class="max-w-xl mx-auto my-4 border-b-2 pb-4">
+        <div class="flex pb-3">
+            <div class="flex-1">
+            </div>
+            <div class="flex-1">
+                <div class="w-10 h-10 bg-green mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-white text-center w-full">1</span>
+                </div>
+            </div>
+
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+                    <div class=" text-xs leading-none py-1 text-center text-grey-darkest rounded " style="width: 100%">
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-grey-darker text-center w-full">2</span>
+                </div>
+            </div>
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+                    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                        style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-grey-darker text-center w-full">3</span>
+                </div>
+            </div>
+            <div class="w-1/6 align-center items-center align-middle content-center flex">
+                <div class="w-full bg-grey-light rounded items-center align-middle align-center flex-1">
+                    <div class="bg-green-light text-xs leading-none py-1 text-center text-grey-darkest rounded "
+                        style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div
+                    class="w-10 h-10 bg-white border-2 border-grey-light mx-auto rounded-full text-lg text-white flex items-center">
+                    <span class="text-grey-darker text-center w-full">4</span>
+                </div>
+            </div>
+
+            <div class="flex-1">
+            </div>
+        </div>
+
+        <div class="flex text-xs content-center text-center">
+            <div class="w-1/4">
+                Order Recieved
+            </div>
+
+            <div class="w-1/4">
+                Order Confirmed
+            </div>
+
+            <div class="w-1/4">
+                Item dispatched
+            </div>
+
+            <div class="w-1/4">
+                Delivered
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>

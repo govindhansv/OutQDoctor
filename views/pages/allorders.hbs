@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<div class="flex flex-col ">
+      <table id="table_id" class="display">
+            <thead>
+                  <tr>
+                        <th>Order ID</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Date and Time</th>
+                        <th>View Products</th>
+                        <th>Track</th>
+                  </tr>
+            </thead>
+            <tbody>
+                  {{#each data}}
+
+                  <tr>
+                        <td>{{this._id}}</td>
+                        <td>{{this.total}}</td>
+                        <td>{{this.status}}</td>
+                        <td>{{this.datetime}}</td>
+                        <td> <a href="/orders/{{this._id}}" class="m-2 flex flex-col text-blue-500">View</a></td>
+                        <td> <a href="/orders/track/{{this._id}}" class="m-2 flex flex-col text-blue-500">Track</a></td>
+                  </tr>
+                  {{/each}}
+
+            </tbody>
+      </table>
+      <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+      <script>
+            $(document).ready(function () {
+                  $('#table_id').DataTable();
+            });
+      </script>
+
+</div>
