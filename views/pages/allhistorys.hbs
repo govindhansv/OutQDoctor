@@ -1,0 +1,12 @@
+
+      {{#each data}}
+          <div class="m-3 p-3 shadow-md w-96 rounded-md bg-grey-500 text-black flex items-center">
+                {{this.name}}
+                <div class="flex w-full justify-end">
+                      <a href="/historys/{{this._id}}" class="m-2 flex flex-col text-blue-500">Open</a>
+                      <a href="/historys/edit/{{this._id}}" class="m-2 flex flex-col text-blue-500">Edit</a>
+                      <a href="/historys/delete/{{this._id}}" class="m-2 flex flex-col text-blue-500">Delete</a>
+                </div>
+          </div>
+      {{/each}}
+    

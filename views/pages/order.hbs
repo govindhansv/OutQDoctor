@@ -1,0 +1,38 @@
+<div class="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10  text-gray-800">
+      <h2 class="text-xl font-semibold">Order ID : {{data._id}} </h2>
+      <h3 class="text-xl font-semibold">Order Date and Time :  {{data.datetime}} </h3>
+      <p>Total amount:
+            <span class="font-semibold">{{data.total}} </span>
+      </p>
+      {{#each data.products}}
+
+      <ul class="flex flex-col divide-y divide-gray-300">
+
+            <li class="flex flex-col py-6 sm:flex-row sm:justify-between">
+                  <div class="flex w-full space-x-2 sm:space-x-4">
+                        <img class="flex-shrink-0 object-cover w-20 h-20 border-transparent rounded outline-none sm:w-32 sm:h-32 bg-gray-500"
+                              src="{{this.product.image}}"
+                              alt="Set of travel chargers">
+                        <div class="flex flex-col justify-between w-full pb-4">
+                              <div class="flex justify-between w-full pb-2 space-x-2">
+                                    <div class="space-y-1">
+                                          <a href="/carts/{{this.product._id}}"
+                                                class="text-lg font-semibold leading-snug sm:pr-8">
+                                                {{this.product.name}}
+                                          </a>
+                                          <p class="text-sm text-gray-600">Black</p>
+                                    </div>
+                                    <div class="text-right">
+                                          <p class="text-lg font-semibold"> {{this.product.price}} </p>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </li>
+      </ul>
+
+      {{/each}}
+
+
+
+</div>
