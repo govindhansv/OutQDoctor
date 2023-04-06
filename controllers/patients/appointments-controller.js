@@ -3,14 +3,14 @@ const db = require('../../connection');
 
 const getAllProducts = async function (req, res) {
     let data = await db.get().collection('bookings').find({}).toArray()
-    console.log(data);
-    res.render('appointments/pages/allappointments', { data });
+    // console.log(data);
+    res.render('appointments/pages/allappointments',{data});
 }
 
 const getAllDoctors = async function (req, res) {
     let data = await db.get().collection('users').find({}).toArray()
     console.log(data);
-    res.render('alldoctors/alldoctors', { data,error:true});
+    res.render('alldoctors/alldoctors', { data:data,error:true});
 }
 
 const getBookingPage = async function (req, res) {
@@ -21,7 +21,7 @@ const postBooking = async function (req, res) {
     let data = req.body;
     console.log(data);
     await db.get().collection('bookings').insertOne(data)
-    res.render('checkouts', { error:true,data })
+    res.render('checkouts', { error:true,data:data })
 }
 
 const getProductAddform = async function (req, res) {
@@ -32,7 +32,7 @@ const addProduct = async function (req, res) {
     let data = req.body
     console.log(data);
     await db.get().collection('doctors').insertOne(data)
-    res.render('pages/product', { data })
+    res.render('pages/product', { data:data })
 }
 
 const getProductEditform = async function (req, res) {
