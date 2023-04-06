@@ -2,10 +2,17 @@ const { ObjectId } = require('mongodb');
 const db = require('../../connection');
 
 const getAllProducts = async function (req, res) {
-    let data = await db.get().collection('bookings').find().toArray()
+    let data = await db.get().collection('bookings').find({}).toArray()
     console.log(data);
-    res.render('appointments/pages/allappointments', { data, user: req.session.user });
+    res.render('appointments/pages/allappointments', { data });
 }
+
+const getAllDoctors = async function (req, res) {
+    let data = await db.get().collection('users').find({}).toArray()
+    console.log(data);
+    res.render('alldoctors/alldoctors', { data,error:true});
+}
+
 const getBookingPage = async function (req, res) {
     res.render('appointments/pages/bookappointment', {error:true,  user: req.session.user });
 }
@@ -15,11 +22,6 @@ const postBooking = async function (req, res) {
     console.log(data);
     await db.get().collection('bookings').insertOne(data)
     res.render('checkouts', { error:true,data })
-}
-const getAllDoctors = async function (req, res) {
-    let data = await db.get().collection('users').find().toArray()
-    console.log(data);
-    res.render('alldoctors/alldoctors', { data,error:true, user: req.session.user });
 }
 
 const getProductAddform = async function (req, res) {
