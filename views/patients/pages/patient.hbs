@@ -1,0 +1,73 @@
+<div class="m-16 flex row justify-around">
+
+    <div
+        class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">{{data.name}}</h5>
+        <!-- List -->
+        <ul role="list" class="space-y-5 my-7">
+            <li class="flex items-center space-x-3">
+                <span><b>Age:- </b></span>
+                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">{{data.age}}</span>
+            </li>
+            <li class="flex items-center space-x-3">
+                <span><b>Blood:- </b></span>
+                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">{{data.blood}}
+                </span>
+            </li>
+            <li class="flex items-center space-x-3">
+                <span><b>Gender:- </b></span>
+                <span
+                    class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">{{data.gender}}</span>
+            </li>
+            <li class="flex items-center space-x-3">
+                <span><b>Location:- </b></span>
+                <span
+                    class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">{{data.location}}</span>
+            </li>
+            <li class="flex items-center space-x-3">
+                <span><b>Phone:- </b></span>
+                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">{{data.phone}}</span>
+            </li>
+            <li class="flex items-center space-x-3">
+                <span><b>Email:- </b></span>
+                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">{{data.gmail}}</span>
+            </li>
+            <li class="flex items-center space-x-3">
+                <span><b>Details:- </b></span>
+                <span
+                    class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400">{{data.details}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <div
+        class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="">
+            <div class="space-y-6">
+                <h5 class="text-xl font-medium text-gray-900 dark:text-white">New Prescription</h5>
+                <form action="/prescriptions/new/" method="post">
+                    <div>
+                        <label for="pname" class="block mb-4  text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Name</label>
+                        <input type="text" name="name" id="name" value="{{data.name}}"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="Name..." required="">
+                    </div>
+                    <div>
+                        <label for="prescription"
+                            class="block mb-4 mt-4 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            Prescription</label>
+                        <textarea type="text" name="prescription" id="prescription"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="Sample prescription" cols="30" rows="12" required=""> </textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="mt-6 w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Add Prescription </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

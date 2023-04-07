@@ -46,7 +46,7 @@ const deleteProduct = async function(req, res) {
 const getProductById = async function(req, res) {
     let id = req.params.id
     let data = await db.get().collection('patients').findOne({ _id: ObjectId(id) })
-    res.render('pages/product', { data });
+    res.render('patients/pages/patient', { data });
 }
 
 

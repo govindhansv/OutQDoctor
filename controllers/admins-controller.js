@@ -1,7 +1,7 @@
 const fun = require('../functions');
 const db = require('../connection');
 
-const getDashboard = async function(req, res) {
+const getDashboard = async function (req, res) {
 
     let admin = req.session.user
     let data = await db.get().collection('products').find().toArray()
@@ -10,16 +10,16 @@ const getDashboard = async function(req, res) {
 
 }
 
-const getSignup = async function(req, res) {
+const getSignup = async function (req, res) {
     if (req.session.loggedIN == false) {
         res.render('forms/admin/signup', { err: true, admin: true })
     } else if (req.session.admin) {
         res.redirect('/auths/admin/dashboard/')
     } else
-        res.render('forms/admin/signup', { admin: true,error:true })
+        res.render('forms/admin/signup', { admin: true, error: true })
 }
 
-const postSignup = async function(req, res) {
+const postSignup = async function (req, res) {
     console.log(req.body);
     req.body.admin = true;
     fun.doSignup(req.body).then((response) => {
@@ -37,21 +37,21 @@ const postSignup = async function(req, res) {
     })
 }
 
-const getSignin = async function(req, res) {
+const getSignin = async function (req, res) {
     console.log(req.session);
     if (req.session.loggedIN) {
         res.redirect('/admin/')
     } else if (req.session.loggedIN == false) {
 
-        res.render('forms/admin/signin', { err: true, admin: true });
+        res.render('forms/admin/signin', { err: true, error: true, admin: true });
     } else {
-        res.render('forms/admin/signin', { admin: true });
+        res.render('forms/admin/signin', { admin: true, error: true });
 
     }
 
 }
 
-const postSignin = async function(req, res) {
+const postSignin = async function (req, res) {
     fun.doLogin(req.body).then((response) => {
         if (response.loginstatus) {
             response.loggedIN = true
@@ -65,7 +65,7 @@ const postSignin = async function(req, res) {
     })
 }
 
-const logOut = async function(req, res) {
+const logOut = async function (req, res) {
     req.session.destroy();
     res.redirect('/')
 }
