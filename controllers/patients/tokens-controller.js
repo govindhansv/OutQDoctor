@@ -1,19 +1,19 @@
 const { ObjectId } = require('mongodb');
 const db = require('../../connection');
 
-const getAllProducts = async function (req, res) {
+const allTokens = async function (req, res) {
     let data = await db.get().collection('bookings').find({}).toArray()
     // console.log(data);
     res.render('appointments/pages/allappointments',{data});
 }
 
-const getAllDoctors = async function (req, res) {
+const createToken = async function (req, res) {
     let data = await db.get().collection('users').find({}).toArray()
     console.log(data);
     res.render('alldoctors/alldoctors', { data:data,error:true});
 }
 
-const getBookingPage = async function (req, res) {
+const nextToken = async function (req, res) {
     res.render('appointments/pages/bookappointment', {error:true,  user: req.session.user });
 }
 
@@ -67,10 +67,9 @@ const getProductById = async function (req, res) {
 }
 
 
-exports.getAllProducts = getAllProducts;
-exports.postBooking = postBooking;
-exports.getBookingPage = getBookingPage;
-exports.getAllDoctors = getAllDoctors;
+exports.createToken = createToken;
+exports.nextToken = nextToken;
+exports.allTokens = allTokens;
 exports.getProductAddform = getProductAddform;
 exports.addProduct = addProduct;
 exports.getProductEditform = getProductEditform;

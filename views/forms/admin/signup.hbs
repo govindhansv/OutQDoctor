@@ -75,19 +75,24 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     required="">
             </div>
-            <div>
-                <label for="start" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+            <div class="container">
+                <label for="end" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Opening Time</label>
-                <input type="time" name="start" id="start" placeholder="5:30"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required="">
+                <div style="position: relative">
+                    <input
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        type="text" name="start" id="datetime" />
+                </div>
             </div>
-            <div>
+
+            <div class="container">
                 <label for="end" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Closing Time</label>
-                <input type="time" name="end" id="end" placeholder="6:30"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required="">
+                <div style="position: relative">
+                    <input
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        type="text" name="end" id="datetime2" />
+                </div>
             </div>
 
             <button type="submit"
@@ -102,4 +107,43 @@
     </div>
 </div>
 
-</div>
+<head>
+    <title>DateTimepicker</title>
+
+    <!-- Include Bootstrap CDN -->
+    {{!--
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+    </script> --}}
+
+    <!-- Include Moment.js CDN -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js">
+    </script>
+
+    <!-- Include Bootstrap DateTimePicker CDN -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+        </script>
+</head>
+
+
+
+<script>
+
+    // Below code sets format to the
+    // datetimepicker having id as
+    // datetime
+    $('#datetime').datetimepicker({
+        format: 'hh:mm a'
+    });
+    $('#datetime2').datetimepicker({
+        format: 'hh:mm a'
+    });
+</script>

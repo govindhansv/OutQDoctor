@@ -22,7 +22,7 @@ const getSignup = async function (req, res) {
 const postSignup = async function (req, res) {
     console.log(req.body);
     req.body.admin = true;
-    fun.doSignup(req.body).then((response) => {
+    fun.AdoSignup(req.body).then((response) => {
         console.log('post');
         if (response.signupstatus) {
             response.loggedIN = true
@@ -52,7 +52,7 @@ const getSignin = async function (req, res) {
 }
 
 const postSignin = async function (req, res) {
-    fun.doLogin(req.body).then((response) => {
+    fun.AdoLogin(req.body).then((response) => {
         if (response.loginstatus) {
             response.loggedIN = true
             req.session.user = response

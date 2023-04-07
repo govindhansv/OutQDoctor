@@ -50,6 +50,51 @@ module.exports = {
         })
     },
 
+    AdoSignup: (userdata) => {
+        return new Promise(async(resolve, reject) => {
+            let user = await db.get().collection('doctors').findOne({ gmail: userdata.gmail })
+            if (user) {
+                let response = {}
+                response.signupstatus = false
+                resolve(response)
+            } else {
+                console.log(userdata);
+                userdata.password = await bcrypt.hash(userdata.password, 10)
+                userdata.img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/IMG_logo_%282017%29.svg/220px-IMG_logo_%282017%29.svg.png'
+                db.get().collection('users').insertOne(userdata).then((response) => {
+                    response.signupstatus = true
+                    response.user = userdata
+                    resolve(response)
+                })
+            }
+        })
+    },
+    AdoLogin: (userdata) => {
+        return new Promise(async(resolve, reject) => {
+            let user = await db.get().collection('doctors').findOne({ gmail: userdata.gmail })
+
+            let response = {}
+            if (user) {
+
+                let validPassword = await bcrypt.compare(userdata.password, user.password)
+                if (!validPassword) {
+                    console.log('login failed wrong password');
+                    response.loginstatus = false
+                    resolve(response)
+                } else {
+                    console.log('login success');
+                    response.loginstatus = true
+                    response.user = user
+                    resolve(response)
+                }
+            } else {
+                console.log('login failed');
+                response.loginstatus = false
+                resolve(response)
+            }
+        })
+    },
+
     createOrder: (data, total, user) => {
         return new Promise(async(resolve, reject) => {
             var datetime = new Date().toLocaleString();

@@ -2,9 +2,10 @@ const { ObjectId } = require('mongodb');
 const db = require('../../connection');
 
 const getAllProducts = async function(req, res) {
-    let data = await db.get().collection('doctors').find().toArray()
+    let data = await db.get().collection('users').find().toArray()
     // console.log(data);
-    res.render('doctors/pages/alldoctors', { data, user: req.session.user });
+    res.json(data);
+    // res.render('doctors/pages/alldoctors', { data, user: req.session.user });
 }
 
 const getProductAddform = async function(req, res) {

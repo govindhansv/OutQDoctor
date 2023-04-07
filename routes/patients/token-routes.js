@@ -2,10 +2,9 @@ const express = require("express");
 const router = express.Router();
 const productsController = require("../../controllers/patients/tokens-controller");
 
-router.get("/", productsController.getAllProducts);
-router.get("/alldoctors", productsController.getAllDoctors);
-router.get("/booking", productsController.getBookingPage);
-router.post("/booking", productsController.postBooking);
+router.get("/", productsController.allTokens);
+router.get("/create", productsController.createToken);
+router.get("/next", productsController.nextToken);
 router.get('/new-patient', productsController.getProductAddform);
 router.post("/add", productsController.addProduct);
 router.get('/edit/:id', productsController.getProductEditform);
