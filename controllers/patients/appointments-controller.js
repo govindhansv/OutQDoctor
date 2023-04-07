@@ -8,7 +8,7 @@ const getAllProducts = async function (req, res) {
 }
 
 const getAllDoctors = async function (req, res) {
-    let data = await db.get().collection('users').find({}).toArray()
+    let data = await db.get().collection('doctors').find({}).toArray()
     console.log(data);
     res.render('alldoctors/alldoctors', { data:data,error:true});
 }
