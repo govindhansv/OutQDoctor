@@ -43,9 +43,15 @@
                     >
                       <th class="px-4 py-3">Name</th>
                       <th class="px-4 py-3">Age</th>
+                      <th class="px-4 py-3">Blood</th>
+                      <th class="px-4 py-3">Location</th>
+                      <th class="px-4 py-3">Email</th>
+                      <th class="px-4 py-3">Phone</th>
+                      <th class="px-4 py-3">Details</th>
                       <th class="px-4 py-3">Gender</th>
                       <th class="px-4 py-3">Edit</th>
                       <th class="px-4 py-3">Delete</th>
+                      <th class="px-4 py-3">View</th>
                     </tr>
                   </thead>
                   <tbody
@@ -80,6 +86,21 @@
                       </td>
                       <td class="px-4 py-3 text-sm">
                        {{this.age}}
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                       {{this.blood}}
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                       {{this.location}}
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                       {{this.gmail}}
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                       {{this.phone}}
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                       {{this.details}}
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span
@@ -129,6 +150,17 @@
                                 clip-rule="evenodd"
                               ></path>
                             </svg>
+                          </a>
+                          
+                        </div>
+                      </td>
+                      <td class="px-4 py-3">
+                        <div class="flex items-center space-x-4 text-sm">
+                         <a href="/patients/{{this._id}}"
+                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                            aria-label="Delete"
+                          >
+                            View
                           </a>
                           
                         </div>

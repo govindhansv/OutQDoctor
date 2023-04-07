@@ -31,6 +31,7 @@ var checkoutRouter = require('./routes/checkout-routes');
 var patientsRouter = require('./routes/patients/patients-routes');
 var prescriptionsRouter = require('./routes/patients/prescription-routes');
 var appointmentsRouter = require('./routes/patients/appointment-routes');
+var tokensRouter = require('./routes/patients/token-routes');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -68,6 +69,7 @@ app.use('/checkouts', checkoutRouter);
 app.use('/patients', patientsRouter);
 app.use('/prescriptions', prescriptionsRouter);
 app.use('/appointments', appointmentsRouter);
+app.use('/tokens',tokensRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
