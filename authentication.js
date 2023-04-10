@@ -6,7 +6,8 @@ module.exports = {
             next()
         } else {
             req.session.userstatus = false
-            res.json({ status: false })
+            // res.json({ status: false })
+            res.redirect('/auths/signin/')
         }
     },
 

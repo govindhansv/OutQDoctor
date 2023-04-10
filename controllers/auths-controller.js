@@ -17,8 +17,8 @@ const postSignup = async function(req, res) {
             response.loggedIN = true
             req.session.user = response
             console.log(response);
-    res.status(201).json([{ "id": response.insertedId }]);
-            // res.redirect('/')
+    // res.status(201).json([{ "id": response.insertedId }]);
+            res.redirect('/doctors/alldoctors/')
         } else {
             req.session.loggedIN = false;
             res.redirect('/auths/signup')
@@ -46,7 +46,7 @@ const postSignin = async function(req, res) {
         if (response.loginstatus) {
             response.loggedIN = true
             req.session.user = response
-            res.redirect('/')
+            res.redirect('/doctors/alldoctors/')
         } else {
             req.session.loggedIN = false;
             res.redirect('/auths/signin/')

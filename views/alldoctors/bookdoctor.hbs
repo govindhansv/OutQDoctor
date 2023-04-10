@@ -1,0 +1,129 @@
+<style>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .time-slot,.n {
+        display: inline-block;
+        width: calc(25% - 10px);
+        margin: 5px;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .time-slot.booked {
+        background-color: #ffcccc;
+        cursor: not-allowed;
+    }
+    .y {
+        background-color: #ffcccc;
+        cursor: not-allowed;
+         pointer-events: none;
+    }
+
+    .time-slot.selected {
+        background-color: #074180;
+    }
+
+    .booking-btn {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #2196f3;
+        color: #fff;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+    }
+
+    .booking-btn:hover {
+        background-color: #1976d2;
+    }
+</style>
+
+<div class="container">
+    <center class="p-5">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Select a Date</h2>
+    </center>
+    <div class="relative max-w-sm">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </div>
+        <input type="date" name="date" id="dateInput" onchange="handleInputChange()">
+    </div>
+    {{!-- <button class="booking-btn" onclick="handleBooking()">Book Time Slot</button> --}}
+</div>
+
+
+<div class="container">
+    <center class="p-5">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Select a time Slot</h2>
+    </center>
+    {{#each times}}
+    <div class="time-slot both {{this.status}}" onclick="handleTimeSlotClick(this)">{{this.time}}</div>
+    {{/each}}
+    {{!-- <div id="time-slots"></div> --}}
+    {{!-- <button class="booking-btn">Book Time Slot</button> --}}
+    <button class="booking-btn" onclick="handleBooking()">Book Time Slot</button>
+    <input type="text" value="{{date}}" id="date">
+    <input type="text" value="{{data._id}}" id="doctorid">
+</div>
+
+<script>
+    let url;
+    let stime;
+    let date;
+
+    function handleInputChange() {
+        const input = document.getElementById("dateInput");
+        alert("Input value: " + input.value);
+        url = "/booking/timeslots//" + input.value;
+        date = input.value;
+        window.location = `http://localhost:3000/doctors/book/{{data._id}}/${input.value}`;
+    }
+
+    function handleTimeSlotClick(elem) {
+        const selected = document.querySelectorAll('.time-slot.selected');
+        selected.forEach((el) => {
+            el.classList.remove('selected');
+        });
+        elem.classList.add('selected');
+        stime = elem.textContent;
+        console.log(stime)
+    }
+
+    function handleBooking() {
+        const selectedSlot = document.querySelector(".selected");
+        if (selectedSlot) {
+            var date = document.getElementById("date");
+            var doctorid = document.getElementById("doctorid");
+            date = date.value;
+            doctorid = doctorid.value;
+
+            alert(`You have booked the time slot: ${stime,date,doctorid}`);
+            $.post("/booking",
+                {
+                    start: stime,
+                    doctorid: doctorid,
+                    userid: "123",
+                    date: date
+                },
+                function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+        } else {
+            alert("Please select a time slot.");
+        }
+    }
+</script>

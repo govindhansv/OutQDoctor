@@ -2,15 +2,9 @@ const { ObjectId } = require('mongodb');
 const db = require('../../connection');
 
 const getAllProducts = async function (req, res) {
-    let data = await db.get().collection('bookings').find({}).toArray()
+    let data = await db.get().collection('bookings').find({"doctorid":req.session.user.user._id}).toArray()
     // console.log(data);
     res.render('appointments/pages/allappointments',{data});
-}
-
-const getAllDoctors = async function (req, res) {
-    let data = await db.get().collection('doctors').find({}).toArray()
-    console.log(data);
-    res.render('alldoctors/alldoctors', { data:data,error:true});
 }
 
 const getBookingPage = async function (req, res) {
@@ -67,10 +61,32 @@ const getProductById = async function (req, res) {
 }
 
 
+const booking = async (req, res) => {
+    // storing req.body
+    let {
+        start,
+        doctorid,
+        userid,
+        date,
+    } = req.body;
+
+    let doctor = await db.get().collection('doctors').findOne({ _id: req.body.doctorid });
+
+    let obj = {
+        start,
+        doctorid,
+        userid,
+        date,
+        doctor:doctor.name
+    };
+    // let user = await db.get().collection('users').findOne({ _id: userid }).toArray()
+    await db.get().collection('bookings').insertOne(obj)
+}
+
+exports.booking = booking;
 exports.getAllProducts = getAllProducts;
 exports.postBooking = postBooking;
 exports.getBookingPage = getBookingPage;
-exports.getAllDoctors = getAllDoctors;
 exports.getProductAddform = getProductAddform;
 exports.addProduct = addProduct;
 exports.getProductEditform = getProductEditform;

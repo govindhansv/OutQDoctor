@@ -61,7 +61,7 @@ module.exports = {
                 console.log(userdata);
                 userdata.password = await bcrypt.hash(userdata.password, 10)
                 userdata.img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/IMG_logo_%282017%29.svg/220px-IMG_logo_%282017%29.svg.png'
-                db.get().collection('users').insertOne(userdata).then((response) => {
+                db.get().collection('doctors').insertOne(userdata).then((response) => {
                     response.signupstatus = true
                     response.user = userdata
                     resolve(response)

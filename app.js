@@ -34,6 +34,7 @@ var appointmentsRouter = require('./routes/patients/appointment-routes');
 var tokensRouter = require('./routes/patients/token-routes');
 var bookingRouter = require('./routes/patients/booking');
 var doctorRouter = require('./routes/patients/doctor-routes');
+var usersRouter = require('./routes/patients/user-routes');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -74,6 +75,7 @@ app.use('/appointments', appointmentsRouter);
 app.use('/tokens',tokensRouter);
 app.use('/booking',bookingRouter);
 app.use('/doctors',doctorRouter);
+app.use('/users',usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
